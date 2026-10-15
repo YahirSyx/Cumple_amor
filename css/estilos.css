@@ -1,0 +1,412 @@
+/* =========================================
+   1. FUENTES Y ESTILOS GENERALES
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+@font-face {
+    font-family: 'Carena';
+    src: url('../fonts/carena/Carena-Regular.otf') format('opentype');
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #dcd0ff; /* Fondo lila pastel elegante */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    overflow-x: hidden; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+/* =========================================
+   2. CANVAS DE FLORES GENERALES DE FONDO
+========================================= */
+#canvasFlores {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -2; 
+}
+
+/* =========================================
+   3. GLOBOS REALISTAS CON CSS
+========================================= */
+.techo-globos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+    pointer-events: none;
+    overflow: hidden;
+    height: 140px;
+}
+
+.globo {
+    position: relative;
+    width: 45px;
+    height: 55px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    animation: flotar-globo 4s ease-in-out infinite alternate;
+    box-shadow: inset -8px -8px 0px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.globo::after {
+    content: "";
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    width: 1px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.globo::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 10px;
+    height: 14px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: rotate(-25deg);
+}
+
+.globo.rosa { background: radial-gradient(circle at 35% 35%, #ff758c, #ff7eb3 60%, #c71585 100%); }
+.globo.azul { background: radial-gradient(circle at 35% 35%, #4facfe, #00f2fe 60%, #005c8a 100%); }
+.globo.morado { background: radial-gradient(circle at 35% 35%, #b174ff, #8a2be2 60%, #4b0082 100%); }
+.globo.amarillo { background: radial-gradient(circle at 35% 35%, #ffe600, #ffb300 60%, #cc8400 100%); }
+
+.globo:nth-child(even) { animation-duration: 5s; animation-delay: 0.5s; transform: translateY(10px); }
+.globo:nth-child(odd) { animation-duration: 3.5s; animation-delay: 1s; }
+
+@keyframes flotar-globo {
+    0% { transform: translateY(0) rotate(-4deg); }
+    100% { transform: translateY(15px) rotate(4deg); }
+}
+
+/* =========================================
+   4. FONDO DE CORAZONES
+========================================= */
+.fondo-corazones {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: -1; 
+}
+
+.corazon-fondo {
+    position: absolute;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    animation: flotar 10s linear infinite;
+    bottom: -10%; 
+}
+
+.corazon-fondo:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; font-size: 30px; }
+.corazon-fondo:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 2s; font-size: 20px; }
+.corazon-fondo:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 4s; font-size: 40px; }
+.corazon-fondo:nth-child(4) { left: 40%; animation-duration: 15s; animation-delay: 1s; font-size: 25px; }
+.corazon-fondo:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 5s; font-size: 35px; }
+.corazon-fondo:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 3s; font-size: 20px; }
+.corazon-fondo:nth-child(7) { left: 70%; animation-duration: 9s; animation-delay: 6s; font-size: 45px; }
+.corazon-fondo:nth-child(8) { left: 80%; animation-duration: 13s; animation-delay: 2s; font-size: 25px; }
+.corazon-fondo:nth-child(9) { left: 90%; animation-duration: 10s; animation-delay: 7s; font-size: 30px; }
+.corazon-fondo:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 1s; font-size: 20px; }
+
+@keyframes flotar {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-1000px) rotate(360deg); opacity: 0; }
+}
+
+/* =========================================
+   5. ESTRUCTURA PRINCIPAL Y FOTOS*/
+
+.contenedor-principal {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    z-index: 1; 
+}
+
+.columna-fotos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 20%; 
+}
+
+.foto-decorativa {
+    width: 100%;
+    aspect-ratio: 4 / 3; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    /* Borde morado neón brillante y sombra luminosa */
+    border: 3px solid #b174ff; 
+    box-shadow: 0 0 12px rgba(177, 116, 255, 0.7), 0 4px 8px rgba(0,0,0,0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.foto-decorativa:hover {
+    transform: scale(1.05) rotate(2deg); 
+    box-shadow: 0 0 20px rgba(177, 116, 255, 1), 0 6px 12px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+.columna-fotos.izquierda .foto-decorativa:nth-child(odd) { transform: rotate(-2deg); }
+.columna-fotos.izquierda .foto-decorativa:nth-child(even) { transform: rotate(1deg); }
+.columna-fotos.derecha .foto-decorativa:nth-child(odd) { transform: rotate(2deg); }
+.columna-fotos.derecha .foto-decorativa:nth-child(even) { transform: rotate(-1deg); }
+/* =========================================
+   6. TARJETA CENTRAL Y CAMPO DE FLORES DE NEÓN
+========================================= */
+.tarjeta {
+    background-color: rgba(242, 235, 255, 0.95); /* Morado pastel suave y elegante */
+    padding: 40px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 55%; 
+    max-width: 580px;
+    border: 2px solid #dcd0ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+    overflow: hidden; 
+}
+
+/* Jardín de flores de neón con mayor opacidad y brillo para que resalten */
+.jardin-tarjeta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; 
+    opacity: 0.85; /* Subimos la visibilidad para que luzcan preciosas */
+}
+
+.flor-svg {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 130px;
+    /* Efecto de resplandor más intenso para que contrasten perfecto con el nuevo fondo pastel */
+    filter: drop-shadow(0 0 10px rgba(177, 116, 255, 0.9)) drop-shadow(0 0 20px rgba(123, 44, 191, 0.5));
+    animation: mecer-flor 4s ease-in-out infinite alternate;
+}
+
+.f-1 { 
+    left: 6%; 
+    transform-origin: bottom left; 
+    animation-delay: 0s; 
+}
+
+.f-2 { 
+    left: 50%; 
+    transform: translateX(-50%); 
+    transform-origin: bottom center; 
+    animation-delay: 1.5s; 
+    width: 120px;
+    height: 150px;
+}
+
+.f-3 { 
+    right: 6%; 
+    transform-origin: bottom right; 
+    animation-delay: 0.8s; 
+}
+
+@keyframes mecer-flor {
+    0% { transform: rotate(-4deg) scale(1); }
+    100% { transform: rotate(4deg) scale(1.05); }
+}
+
+p {
+    font-family: 'Carena', 'Berkshire Swash', cursive;
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    color: #444;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   7. SERPENTINAS Y FIESTA
+========================================= */
+.decoracion-fiesta {
+    font-size: 2em;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.decoracion-fiesta span {
+    display: inline-block;
+    animation: girar-serpentina 3s infinite ease-in-out;
+}
+
+@keyframes girar-serpentina {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(15deg); }
+}
+
+/* =========================================
+   8. TÍTULO ARQUEADO (CARENA) Y CORAZÓN
+========================================= */
+.contenedor-titulo {
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.svg-arqueado {
+    width: 100%;
+    max-width: 620px;
+    height: auto;
+    overflow: visible;
+}
+
+.texto-carena {
+    font-family: 'Carena', 'Berkshire Swash', cursive;
+    font-size: 26px; 
+    fill: #d63384; 
+}
+
+.corazon-titulo {
+    font-size: 38px;
+    margin-top: -45px; 
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* =========================================
+   9. BOTÓN
+========================================= */
+.control {
+    font-family: 'Carena', 'Berkshire Swash', cursive;
+    background-color: #d63384; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.3em;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.control:hover {
+    background-color: #c2185b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(214, 51, 132, 0.6);
+}
+
+/* =========================================
+   10. VIDEO DE LA CANCIÓN
+========================================= */
+.video-oculto { display: none; }
+.video-visible {
+    display: block;
+    width: 90%; 
+    max-width: 300px; 
+    margin: 10px auto; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3); 
+    animation: aparecer 0.8s ease-out forwards;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-10px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================
+   11. FUEGOS ARTIFICIALES REALISTAS
+========================================= */
+.cohete {
+    position: fixed;
+    bottom: -20px;
+    width: 3px;
+    height: 35px;
+    background: linear-gradient(to top, transparent, #ffffff, #ffdf00);
+    border-radius: 50px;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: 0 0 8px #ffdf00;
+    animation: subir 0.6s ease-out forwards;
+}
+
+@keyframes subir {
+    0% { bottom: -20px; opacity: 1; }
+    100% { bottom: calc(100vh - var(--destino-y)); opacity: 0; }
+}
+
+.chispa {
+    position: fixed;
+    width: 6px; 
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none; 
+    z-index: 9999; 
+    box-shadow: 0 0 6px currentColor;
+    animation: explosion 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes explosion {
+    0% { transform: translate(0, 0) scale(1.5); opacity: 1; }
+    50% { opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0.2); opacity: 0; }
+}
+
+/* =========================================
+   12. ADAPTACIÓN PARA CELULARES
+========================================= */
+@media (max-width: 768px) {
+    .contenedor-principal { flex-direction: column; }
+    .columna-fotos {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto; 
+        padding-bottom: 10px;
+    }
+    .tarjeta { width: 90%; }
+    .foto-decorativa { width: 120px; }
+}

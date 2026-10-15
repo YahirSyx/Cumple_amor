@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Mi Hermosa Chaparrita!</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- Canvas para el jardín de flores procedurales de fondo general -->
+    <canvas id="canvasFlores"></canvas>
+
+    <!-- Globos reales con CSS -->
+    <div class="techo-globos">
+        <div class="globo rosa"></div>
+        <div class="globo azul"></div>
+        <div class="globo morado"></div>
+        <div class="globo amarillo"></div>
+        <div class="globo rosa"></div>
+        <div class="globo azul"></div>
+        <div class="globo morado"></div>
+        <div class="globo amarillo"></div>
+    </div>
+
+    <!-- Fondo de corazones flotantes -->
+    <div class="fondo-corazones">
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+        <div class="corazon-fondo">❤️</div>
+    </div>
+
+    <div class="contenedor-principal">
+        
+        <!-- Galería de fotos izquierda -->
+        <div class="columna-fotos izquierda">
+            <img src="img/1.jpeg" alt="Foto 1" class="foto-decorativa" style="object-position: 50% 15%;">
+            <img src="img/2.jpeg" alt="Foto 2" class="foto-decorativa" style="object-position: 50% 15%;">
+            <img src="img/3.jpeg" alt="Foto 3" class="foto-decorativa">
+            <img src="img/4.jpeg" alt="Foto 4" class="foto-decorativa">
+        </div>
+
+        <!-- Tarjeta central -->
+        <div class="tarjeta">
+            
+            <!-- Campo de flores de neón morado detallado dentro del fondo blanco -->
+            <div class="jardin-tarjeta">
+                <!-- Flor Izquierda -->
+                <svg viewBox="0 0 100 120" class="flor-svg f-1">
+                    <path d="M50,120 Q50,70 30,30" stroke="#9d4edd" stroke-width="3" fill="none"/>
+                    <path d="M40,80 Q20,75 25,60 Q38,68 40,80" fill="#7b2cbf"/>
+                    <circle cx="25" cy="20" r="12" fill="#c77dff"/>
+                    <circle cx="45" cy="25" r="12" fill="#c77dff"/>
+                    <circle cx="35" cy="10" r="12" fill="#c77dff"/>
+                    <circle cx="35" cy="20" r="6" fill="#e0aaff"/>
+                </svg>
+
+                <!-- Flor Centro (Más alta y brillante) -->
+                <svg viewBox="0 0 100 120" class="flor-svg f-2">
+                    <path d="M50,120 Q50,60 50,20" stroke="#9d4edd" stroke-width="3.5" fill="none"/>
+                    <path d="M50,90 Q30,85 35,70 Q48,80 50,90" fill="#7b2cbf"/>
+                    <path d="M50,70 Q70,65 65,50 Q50,60 50,70" fill="#7b2cbf"/>
+                    <circle cx="35" cy="20" r="14" fill="#e0aaff"/>
+                    <circle cx="65" cy="20" r="14" fill="#e0aaff"/>
+                    <circle cx="50" cy="8" r="14" fill="#e0aaff"/>
+                    <circle cx="50" cy="18" r="7" fill="#ffffff"/>
+                </svg>
+
+                <!-- Flor Derecha -->
+                <svg viewBox="0 0 100 120" class="flor-svg f-3">
+                    <path d="M50,120 Q50,70 70,30" stroke="#9d4edd" stroke-width="3" fill="none"/>
+                    <path d="M60,80 Q80,75 75,60 Q62,68 60,80" fill="#7b2cbf"/>
+                    <circle cx="75" cy="20" r="12" fill="#c77dff"/>
+                    <circle cx="55" cy="25" r="12" fill="#c77dff"/>
+                    <circle cx="65" cy="10" r="12" fill="#c77dff"/>
+                    <circle cx="65" cy="20" r="6" fill="#e0aaff"/>
+                </svg>
+            </div>
+
+            <div class="decoracion-fiesta">
+                <span class="serpentina">🎀</span> 
+                <span class="confeti">🎊</span> 
+                <span class="serpentina">🎗️</span> 
+                <span class="confeti">🎉</span> 
+                <span class="serpentina">🎀</span>
+            </div>
+            
+            <!-- Título Arqueado Completo -->
+            <div class="contenedor-titulo">
+                <svg viewBox="0 0 800 160" class="svg-arqueado">
+                    <path id="curva-texto" d="M 10,130 Q 400,10 790,130" fill="transparent" />
+                    <text>
+                        <textPath href="#curva-texto" startOffset="50%" text-anchor="middle" class="texto-carena">
+                            ¡Feliz Cumpleaños Mi Hermosa Chaparrita!
+                        </textPath>
+                    </text>
+                </svg>
+                <div class="corazon-titulo">❤️</div>
+            </div>
+
+            <p>La canción habla de un amor que hoy puedo llamar nuestro.</p>
+
+            <button id="botonMusica" class="control" type="button">
+                🎵 Reproducir nuestra canción
+            </button>
+
+            <!-- Video de la canción -->
+            <video id="musicaFondo" class="video-oculto" loop playsinline preload="auto">
+                <source src="Siddhartha - Únicos (Cover Audio).mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+        </div>
+
+        <!-- Galería de fotos derecha -->
+        <div class="columna-fotos derecha">
+            <img src="img/5.jpeg" alt="Foto 5" class="foto-decorativa">
+            <img src="img/6.jpeg" alt="Foto 6" class="foto-decorativa">
+            <img src="img/7.jpeg" alt="Foto 7" class="foto-decorativa">
+            <img src="img/8.jpeg" alt="Foto 8" class="foto-decorativa">
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
